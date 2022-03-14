@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class TwoNumberSum {
 
-    public static int[] hashTableApproach(int[] array, int target){
-        //O(n)
+    public static int[] hashingApproach(int[] array, int target){
+        //O(n) - Time complexity
+        //O(n) - space complexity
         Set s = new HashSet();
 
         for(int i=0; i<array.length; i++){
@@ -44,7 +45,7 @@ public class TwoNumberSum {
 
         int[] result;
 //        result = bruteForceTwoNumberSum(array, target);
-        result = hashTableApproach(array, target);
+        result = hashingApproach(array, target);
         if(result.length == 0){
             System.out.println("No such numbers");
         }
