@@ -10,13 +10,17 @@ public class RotateArray {
     }
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
-        int n;
+        int n, k;
         n = s.nextInt();
+        k=s.nextInt();
+        k = k%n;
 
         int[] array = new int[n];
         for(int i=0; i<n; i++){
             array[i] = s.nextInt();
         }
+        //brute force way of rotating n units
+        for(int i=0; i<k; i++)
         rotateArrayOneUnit(array);
         for(int item : array){
             System.out.print(item + " ");
