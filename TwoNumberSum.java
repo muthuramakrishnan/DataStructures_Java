@@ -1,9 +1,24 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Scanner;
 
 public class TwoNumberSum {
-
+    public static int[] twoPointerApproach(int[] array, int target){
+        int left = 0;
+        int right = array.length-1;
+        Arrays.sort(array);
+        while(left<right){
+            if(array[left] + array[right] == target){
+                return new int[] {array[left], array[right]};
+            }
+            if(target> array[left] + array[right]){
+                left++;
+            }
+            else right--;
+        }
+        return new int[] {};
+    }
     public static int[] hashingApproach(int[] array, int target){
         //O(n) - Time complexity
         //O(n) - space complexity
@@ -45,7 +60,8 @@ public class TwoNumberSum {
 
         int[] result;
 //        result = bruteForceTwoNumberSum(array, target);
-        result = hashingApproach(array, target);
+//        result = hashingApproach(array, target);
+        result = twoPointerApproach(array, target);
         if(result.length == 0){
             System.out.println("No such numbers");
         }
