@@ -27,7 +27,7 @@ public class PrefixSumMatrix {
                     prefixSum[i][j] = prefixSum[i-1][j] + array[i][j];
                 }
                 else{
-                    prefixSum[i][j] = prefixSum[i-1][j] + prefixSum[i][j-1] - prefixSum[i-1][j-1] + array[i][j];
+                    prefixSum[i][j] = prefixSum[i-1][j] + prefixSum[i][j-1] + array[i][j] - prefixSum[i-1][j-1];
                 }
             }
         }
@@ -42,10 +42,13 @@ public class PrefixSumMatrix {
 
             int ans = prefixSum[i2][j2];
             if(i1>0){
-                ans -= prefixSum[i1-1][j1];
+                ans -= prefixSum[i1-1][j2];
             }
             if(j1>0){
-                ans -= prefixSum[i1][j1-1];
+                ans -= prefixSum[i2][j1-1];
+            }
+            if(i1>0 && j1>0){
+                ans += prefixSum[i1-1][j1-1];
             }
             System.out.println(ans);
             k--;
