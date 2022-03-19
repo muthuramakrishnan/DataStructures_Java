@@ -18,14 +18,12 @@ public class MaxGapBucketing {
             minEle = Math.min(array[i], minEle);
             maxEle = Math.max(array[i], maxEle);
         }
-
-        int minGap = (maxEle - minEle) / (n-1);
-        if((maxEle - minEle) % (n-1) !=0) minGap++;
-
-        if(minGap == 0){
+        if(maxEle - minEle == 0){
             System.out.println(0);
             return;
         }
+        int minGap = (maxEle - minEle) / (n-1);
+        if((maxEle - minEle) % (n-1) !=0) minGap++;
 
         int[] minElementBucket = new int[n];
         int[] maxElementBucket = new int[n];
@@ -35,13 +33,13 @@ public class MaxGapBucketing {
         }
         for(int i=0; i<n; i++){
             int bucketNo = (array[i] - minEle) / minGap;
-            minElementBucket[i] = Math.min(minElementBucket[bucketNo], array[i]);
-            maxElementBucket[i] = Math.max(maxElementBucket[bucketNo], array[i]);
+            minElementBucket[bucketNo] = Math.min(minElementBucket[bucketNo], array[i]);
+            maxElementBucket[bucketNo] = Math.max(maxElementBucket[bucketNo], array[i]);
         }
 
         int ans = Integer.MIN_VALUE;
         int prev = Integer.MIN_VALUE;
-        for(int i=1; i<n; i++){
+        for(int i=0; i<n; i++){
             if(minElementBucket[i] == Integer.MAX_VALUE)
             {
                 continue;

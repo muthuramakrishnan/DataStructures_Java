@@ -36,7 +36,6 @@ public class MatrixBlockSum {
         }
 
         //calculate the resultant matrix
-        int[][] results = new int[m][n];
         for(int i=0; i<m; i++){
             for(int j=0; j<n; j++){
                 int i1, j1, i2, j2;
@@ -54,10 +53,10 @@ public class MatrixBlockSum {
                 if(i1>0 && j1>0){
                     sum += prefixSum[i1-1][j1-1];
                 }
-                results[i][j] = sum;
+                array[i][j] = sum;
             }
         }
-        for(int[] result : results)
+        for(int[] result : array)
             System.out.println(Arrays.toString(result));
 
     }
