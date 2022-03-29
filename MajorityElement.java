@@ -3,6 +3,22 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class MajorityElement {
+    public static void mooreVotingAlgorithm(int[] array, int n){
+        int element = 0;
+        int count = 0;
+        for(int i=0; i<n; i++){
+            if(count==0){
+                element = array[i];
+            }
+            //whenever we find some other element which is not equal to the current element
+            //then decrease the count
+            if(element == array[i]){
+                count++;
+            }
+            else count--;
+        }
+        System.out.println(element);
+    }
     public static void hashMapApproach(int[] array, int n){
         //this uses o(n) extra space
         //o(n) / O(nlogn) complexity
@@ -33,6 +49,7 @@ public class MajorityElement {
             array[i] = s.nextInt();
         }
 
-        hashMapApproach(array, n);
+//        hashMapApproach(array, n);
+        mooreVotingAlgorithm(array, n);
     }
 }
