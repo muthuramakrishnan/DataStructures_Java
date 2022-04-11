@@ -15,7 +15,8 @@ public class PrimeFactorization {
     public static void bruteForceApproach(int n){
         List<Integer> factors = new ArrayList<>();
         for(int i=2; i<=n; i++){
-            if(isPrime(i)){
+            if(isPrime(i)){ //no need of this condition check
+                //because, while loop takes care of it
                 while(n%i==0){
                     factors.add(i);
                     n = n/i;
