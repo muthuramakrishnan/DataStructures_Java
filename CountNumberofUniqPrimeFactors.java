@@ -1,5 +1,7 @@
 /* package codechef; // don't place package name! */
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /* Name of the class has to be "Main" only if the class is public. */
@@ -18,7 +20,7 @@ public class CountNumberofUniqPrimeFactors
         }
         for(int i=2; i*i<=n; i++){
             if(sieve[i]==1){
-                sieve[i]=i;
+//                sieve[i]=i;
                 for(int j=i*i; j<=n; j+=i){
                     if(sieve[j]==1){
                         sieve[j]=i;
@@ -31,15 +33,25 @@ public class CountNumberofUniqPrimeFactors
             int size = s.nextInt();
             for(int i=0; i<size; i++){
                 int element = s.nextInt();
-                int currentDivisor = sieve[element];
-                int uniqCount = 1;
+                int origElement = element;
+                Map<Integer, Integer> counts = new HashMap<>();
                 while(element>1){
-                    if(currentDivisor!=sieve[element]){
-                        uniqCount++;
+                   if(sieve[element]!=1) {
+                        if (counts.containsKey(sieve[element])) {
+                            int value = counts.get(sieve[element]);
+                            counts.put(sieve[element], ++value);
+                        } else {
+                            counts.put(sieve[element], 1);
+                        }
                     }
-                    element = element/sieve[element];
+                    if(element/sieve[element] == element){
+                        element=1;
+                    }
+                    else element = element/sieve[element];
                 }
-                System.out.print(uniqCount+" ");
+                int ans= counts.size();
+                ans = sieve[origElement]==1 ? ans+1: ans;
+                System.out.print(ans +" ");
             }
             System.out.println();
             t--;
