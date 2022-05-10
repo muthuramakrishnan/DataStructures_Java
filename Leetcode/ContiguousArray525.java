@@ -27,11 +27,18 @@ public class ContiguousArray525 {
                 total--;
             }
 
-            if(m.containsKey(total)){
-                maxLength = Math.max(maxLength, m.get(total) - (i+1));
+            //edge case 1
+            if(m.containsKey(total) & total!=0){
+                maxLength = Math.max(maxLength, (i+1)-m.get(total));
             }
+            //edge case 2
             else if(total == 0){
                 maxLength = (i+1);
+                m.put(total, i+1);
+            }
+            else{
+                //dont forget to update the map
+                m.put(total, i+1);
             }
         }
         System.out.println(maxLength);
