@@ -43,7 +43,7 @@ public class SegmentedSieve {
         }
         for (int i = 0; i < isPrime.length; i++) {
             if (isPrime[i]) {
-                System.out.println(i + l);
+                System.out.print(i + l +" ");
             }
         }
     }
