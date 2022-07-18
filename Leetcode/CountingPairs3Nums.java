@@ -7,7 +7,7 @@ public class CountingPairs3Nums {
         int ans = 1;
         int count = 0;
         int denom = 1;
-        for (int i = n; i >= n - r; i--) {
+        for (int i = n; i > n - r; i--) {
             ans *= i;
             count++;
             denom *= count;
