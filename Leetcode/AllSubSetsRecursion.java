@@ -17,7 +17,7 @@ public class AllSubSetsRecursion {
             return;
         }
         int digit = arr[index];
-        //Recurrence call 1 -> without including the digit
+        //Recurrence call 1 -> without  including the digit
         printAllSubSet(temp, arr, index+1, size);
 
         //Recurrence call 2 -> Include the digit
